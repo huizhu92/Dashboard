@@ -1,0 +1,48 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(readxl)
+library(ggplot2)
+```
+
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+mydata1 = read_excel("Refugee.xlsx", sheet = "Afghanistan")
+View(mydata1)
+gg1=ggplot(mydata1,aes(x=mydata1$Year,y=mydata1$Number))+labs(title="refugee number 1990-2016",subtitle="Afghanistan")+geom_point()+geom_smooth(method="lm",se=F)
+gg1
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+mydata2 = read_excel("Refugee.xlsx", sheet = "Argentina")
+View(mydata2)
+gg2=ggplot(mydata2,aes(x=mydata2$Year,y=mydata2$Number))+labs(title="refugee number 1990-2016",subtitle="Argentina")+geom_point()+geom_smooth(method="lm",se=F)
+gg2
+```
+
+### Chart C
+
+```{r}
+mydata3 = read_excel("Refugee.xlsx", sheet = "World")
+View(mydata3)
+gg3=ggplot(mydata3,aes(x=mydata3$Year,y=mydata3$Number))+labs(title="refugee number 1990-2016",subtitle="World")+geom_point()+geom_smooth(method="lm",se=F)
+gg3
+```
+
